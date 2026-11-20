@@ -1,6 +1,6 @@
-# 《缺氧》理论资源收支
+# 缺氧资源分析
 
-《理论资源收支》是《缺氧》的独立玩家模组，用于按星球查看理论产耗、游戏内采集的实际收支及近 10 周期趋势。`v1.0.0` 面向 U60（764025 起）。[下载安装包](https://github.com/luo1631/oni-resource-balance/releases/latest)
+缺氧资源分析是《缺氧》的独立玩家模组，用于按星球查看理论产耗、游戏内采集的实际收支及近 10 周期趋势。`v1.0.1` 面向 U60（764025 起）。[下载安装包](https://github.com/luo1631/oni-resource-analysis/releases/latest)
 
 进入存档后，点「资源」左侧的「收支」。默认跟踪水、电力、氧气。勾选资源后可应用或直达其他页并保存。流向图默认隐藏氧气、电力，可用顶栏开关显示。
 
@@ -35,7 +35,7 @@
 
 ## 安装和构建
 
-Windows 用户下载 `OniResourceBalance-1.0.0-U60.zip` 并完整解压。退出游戏后双击 `setup.cmd`，安装器会放置并启用模组，升级时会备份旧版。手动安装可将解压后的 `OniResourceBalance` 文件夹放入游戏的 `mods/Local`，然后在主菜单的「模组」中启用。[各平台模组目录](https://github.com/peterhaneve/ONIMods#local-downloads)
+Windows 用户下载 `OniResourceAnalysis-1.0.1-U60.zip` 并完整解压。退出游戏后双击 `setup.cmd`，安装器会放置并启用模组，升级时会备份旧版。手动安装可将解压后的 `OniResourceBalance` 文件夹放入游戏的 `mods/Local`，然后在主菜单的「模组」中启用。[各平台模组目录](https://github.com/peterhaneve/ONIMods#local-downloads)
 
 自行构建使用 PowerShell 7.4+ 和本机《缺氧》安装目录的 `OxygenNotIncluded_Data/Managed`。`./publish-local.ps1 -Archive <ZIP>` 将安装包解压至 `dist/local-package/OniResourceBalance` 并安装启用，可用 `-PackageDirectory` 指定解压位置。
 

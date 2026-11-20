@@ -6,6 +6,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $modId = 'OniResourceBalance'
+$modTitle = '缺氧资源分析'
 $payload = @('OniResourceBalance.dll', 'mod.yaml', 'mod_info.yaml')
 $staging = $null
 $setupLock = $null
@@ -120,7 +121,7 @@ function Enable-LocalMod([string] $ModsDirectory, [string] $FolderName) {
             label = [pscustomobject]@{
                 distribution_platform = 0
                 id = $FolderName
-                title = '理论资源收支 | Theoretical Resource Balance'
+                title = $modTitle
                 version = $folderVersion
             }
             status = 1
@@ -135,7 +136,7 @@ function Enable-LocalMod([string] $ModsDirectory, [string] $FolderName) {
         $missingModes = @($gameModes | Where-Object { $_ -cnotin $entry.enabledForDlc })
         # U60 reads enabledForDlc and can reset the legacy enabled flag when saving.
         if ($entry.enabled -eq $true -and $entry.status -eq 1 -and $entry.staticID -ceq $modId -and
-            $entry.label.version -eq $folderVersion -and $missingModes.Count -eq 0) {
+            $entry.label.title -ceq $modTitle -and $entry.label.version -eq $folderVersion -and $missingModes.Count -eq 0) {
             return
         }
         $entry | Add-Member -NotePropertyMembers @{
@@ -144,7 +145,10 @@ function Enable-LocalMod([string] $ModsDirectory, [string] $FolderName) {
             enabledForDlc = @($entry.enabledForDlc | Where-Object { $null -ne $_ }) + $missingModes
             staticID = $modId
         } -Force
-        $entry.label | Add-Member -NotePropertyName version -NotePropertyValue $folderVersion -Force
+        $entry.label | Add-Member -NotePropertyMembers @{
+            title = $modTitle
+            version = $folderVersion
+        } -Force
     }
 
     $pending = Join-Path $ModsDirectory (".$modId-" + [Guid]::NewGuid().ToString('N') + '.json')
@@ -251,7 +255,7 @@ try {
     }
 
     Enable-LocalMod $mods ((Get-Item -LiteralPath $destination).Name)
-    Write-Host '「理论资源收支」已安装并启用。现在可以启动游戏。'
+    Write-Host "「$modTitle」已安装并启用。现在可以启动游戏。"
 } catch {
     Write-Host "安装或启用未完成。$($_.Exception.Message)" -ForegroundColor Red
     exit 1

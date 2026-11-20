@@ -91,7 +91,7 @@ internal sealed partial class ResourcePlanningPanel : KModalScreen
         entryRect.pivot = new Vector2(1, 0.5f);
         entryRect.sizeDelta = new Vector2(42, 25);
         CreateLabel(entryRect, Tr("收支", "Flow"), 13, TextAlignmentOptions.Center, HeaderTextColor, nativeFont);
-        entry.gameObject.AddComponent<ToolTip>().SetSimpleTooltip(Tr("理论资源收支", "Theoretical Resource Balance"));
+        entry.gameObject.AddComponent<ToolTip>().SetSimpleTooltip(Tr("缺氧资源分析", "ONI Resource Analysis"));
         header.gameObject.AddComponent<ResourceBalanceEntryAnchor>().Initialize(header, overlay, entryRect);
     }
 
@@ -192,7 +192,7 @@ internal sealed partial class ResourcePlanningPanel : KModalScreen
 
         var bar = TopBand("TitleBar", body, TitleHeight);
         bar.gameObject.AddComponent<Image>().color = HeaderColor;
-        var title = FitText(Label(bar, Tr("理论资源收支", "Resource Balance"), compactUi ? 13 : 16,
+        var title = FitText(Label(bar, Tr("缺氧资源分析", "ONI Resource Analysis"), compactUi ? 13 : 16,
             color: HeaderTextColor), MinimumTextSize);
         title.rectTransform.offsetMin = new Vector2(7, 0);
         title.rectTransform.offsetMax = new Vector2(-TitleHeight - 2, 0);
