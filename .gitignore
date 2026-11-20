@@ -1,0 +1,9 @@
+/dist/
+/bin/
+/obj/
+/.vs/
+*.dll
+*.pdb
+*.sav
+*.log
+mods.json
